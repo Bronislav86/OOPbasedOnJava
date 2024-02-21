@@ -1,6 +1,7 @@
 package ООП.Seminar1;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -9,7 +10,6 @@ import ООП.Seminar1.Megicains.Monk;
 import ООП.Seminar1.Megicains.Wizard;
 import ООП.Seminar1.Shooters.Crossbowman;
 import ООП.Seminar1.Shooters.Sniper;
-import ООП.Seminar1.Warriors.Peasant;
 import ООП.Seminar1.Warriors.Raider;
 import ООП.Seminar1.Warriors.Spearman;
 
@@ -40,106 +40,26 @@ import ООП.Seminar1.Warriors.Spearman;
   - Меткость        - Скорость стрельбы                         - Чакра
   - Маскировка      
 
+  Семинар 3:
+  Добавить в файл интерфейса метод void step() это будет основной метод взаимодействыия с объектами.
+  Добавить интерфейс в базовый абстрактный класс. Реализовать этот метод во всех классах наследниках.
+  Для начала просто заглушкой.
+
+  Доработать классы лучников. Лучник должен во первых проверить жив ли он и есть ли у него стрелы, если нет
+  то завершить метод. Есль всё да, то найти ближайшего противника и выстрелить по немы и, соответственно
+  потратить одну стрелу. Реализовать весь функционал лучников в методе step().
+
+  Добавить в абстрактный класс int поле инициатива. В классах наследников инициализировать это поле.
+  Крестьянин = 0, маги=1, пехота=2, лучники=3. В мэйне сделать так, чтобы сначала делали ход персонажи с наивысшей
+  инициативой из обеих команд а с наименьшей в конце.
 
 */
 public class Main {
     public static void main(String[] args) {
         
-        Sniper sniper = new Sniper(fillName(), 0, 0);
-        Crossbowman crossbowman = new Crossbowman(fillName(), 0, 0);
-        Wizard magic = new Wizard(fillName(), 0, 0);
-        Peasant peasant = new Peasant(fillName(), 0, 0);
-        Spearman spearman = new Spearman(fillName(), 0, 0);
-        Monk monk = new Monk(fillName(), 0, 0);
-        Raider raider = new Raider(fillName(), 0, 0);
+        List<BaseCharacter> team1 = new ArrayList<>(teamCreator(0));
+        List<BaseCharacter> team2 = new ArrayList<>(teamCreator(9));
 
-        // System.out.printf("Name: %s %s\n",sniper.name, sniper.toString());
-        // System.out.printf("Name: %s %s\n",crossbowman.name, crossbowman.toString());
-        // System.out.printf("Name: %s %s\n",magic.name, magic.toString());
-        // System.out.printf("Name: %s %s\n",monk.name, monk.toString());
-        // System.out.printf("Name: %s %s\n",spearman.name, spearman.toString());
-        // System.out.printf("Name: %s %s\n",raider.name, raider.toString());
-        // System.out.printf("Name: %s %s\n",peasant.name, peasant.toString());
-
-        int teamCount = 10;
-        List<BaseCharacter> team1 = new ArrayList<>();
-        List<BaseCharacter> team2 = new ArrayList<>();
-
-        for (int i = 0; i < teamCount; i++) {
-            switch (new Random().nextInt(1, 8)) {
-                case 1:
-                    team1.add(new Monk(fillName(), i, 0));
-                    break;
-                case 2:
-                    team1.add(new Wizard(fillName(), i, 0));
-                    break;
-                case 3:
-                    team1.add(new Crossbowman(fillName(), i, 0));
-                    break;
-                case 4:
-                    team1.add(new Sniper(fillName(), i, 0));
-                    break;
-                case 5:
-                    team1.add(new Peasant(fillName(), i, 0));
-                    break;
-                case 6:
-                    team1.add(new Raider(fillName(), i, 0));
-                    break;
-                case 7:
-                    team1.add(new Spearman(fillName(), i, 0));
-                    break;
-            }
-        }
-
-        for (int i = 0; i < teamCount; i++) {
-            switch (new Random().nextInt(1, 8)) {
-                case 1:
-                    team2.add(new Monk(fillName(), i, 9));
-                    break;
-                case 2:
-                    team2.add(new Wizard(fillName(), i, 9));
-                    break;
-                case 3:
-                    team2.add(new Crossbowman(fillName(), i, 9));
-                    break;
-                case 4:
-                    team2.add(new Sniper(fillName(), i, 9));
-                    break;
-                case 5:
-                    team2.add(new Peasant(fillName(), i, 5));
-                    break;
-                case 6:
-                    team2.add(new Raider(fillName(), i, 9));
-                    break;
-                case 7:
-                    team2.add(new Spearman(fillName(), i, 9));
-                    break;
-            }
-        }
-/*
- * #Сделал еще один вариант алгоритма распределения по командам 
- */
-        // for (int i = 0; i < teamCount; i++) {
-            
-        //     switch (new Random().nextInt(4)) {
-        //         case 0:
-        //             team1.add(new Monk(fillName(), i, 0));
-        //             team2.add(new Wizard(fillName(), i, 9));
-        //             break;
-        //         case 1:
-        //             team1.add(new Crossbowman(fillName(), i, 0));
-        //             team2.add(new Sniper(fillName(), i, 9));
-        //             break;
-        //         case 2:
-        //             team1.add(new Raider(fillName(), i, 0));
-        //             team2.add(new Spearman(fillName(), i, 9));
-        //             break;               
-        //         case 3:
-        //             team1.add(new Peasant(fillName(), i, 0));
-        //             team2.add(new Peasant(fillName(), i, 9));
-        //             break;
-        //     }
-        // }
         for (BaseCharacter unit : team1) {
             System.out.printf("Имя: %s, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
         }
@@ -147,15 +67,81 @@ public class Main {
         for (BaseCharacter unit : team2) {
             System.out.printf("Имя: %s, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
         }   
+        System.out.println();
+
         // Проба метода getInfo
         System.out.println(team1.get(0).getInfo());
         System.out.println("------------------");
 
-        // визуально видно, что персонаж из второй команды, который стоит не на 9 клетке а на 5, определяется как цель
-        System.out.println(team1.get(2).nearestEnemy(team2));
-    }
+        ArrayList<BaseCharacter> all = new ArrayList<>();
+        all.addAll(team1);
+        all.addAll(team2);
+
+        all.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());    
+        for (BaseCharacter unit : all) {
+            System.out.println(unit.getInfo());
+        }
+        // for (BaseCharacter unit : all) {
+        //     unit.step(all);
+        // }
+        System.out.println("-------------------------------------");
+
+        for (BaseCharacter unit : all) {
+            System.out.printf("Имя: %s, Здоровье: %d, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getHealth(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
+        }   
+        System.out.println();
+
+        for (BaseCharacter element : all) {
+            if (element instanceof Sniper || element instanceof Crossbowman) {
+                element.step(all);
+                break;
+            }
+        }
+
+        for (BaseCharacter unit : all) {
+            System.out.printf("Имя: %s, Здоровье: %d, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getHealth(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
+        }   
+        System.out.println();
+    
+
+
+
+}
 
     private static String fillName(){
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length-1)]);
     }
+
+    private static ArrayList<BaseCharacter> teamCreator(int y){
+        ArrayList<BaseCharacter> team = new ArrayList<BaseCharacter>();
+        int teamCount = 10;
+        for (int i = 0; i < teamCount; i++) {
+            switch (new Random().nextInt(1, 8)) {
+                case 1:
+                    team.add(new Monk(fillName(), i, y));
+                    break;
+                case 2:
+                    team.add(new Wizard(fillName(), i, y));
+                    break;
+                case 3:
+                    team.add(new Crossbowman(fillName(), i, y));
+                    break;
+                case 4:
+                    team.add(new Sniper(fillName(), i, y));
+                    break;
+                case 5:
+                    team.add(new Peasant(fillName(), i, y));
+                    break;
+                case 6:
+                    team.add(new Raider(fillName(), i, y));
+                    break;
+                case 7:
+                    team.add(new Spearman(fillName(), i, y));
+                    break;
+            }
+        }
+        return team;
+    }
+
+    
 }

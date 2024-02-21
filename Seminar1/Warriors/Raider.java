@@ -1,37 +1,33 @@
 package ООП.Seminar1.Warriors;
 
-import  ООП.Seminar1.BaseCharacter;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Raider extends BaseCharacter implements Warrior {
-    int fortune;
+import ООП.Seminar1.BaseCharacter;
+
+public class Raider extends Warriors {
+    protected int fortune;
 
     public Raider(String name, Integer x, Integer y) {
-        super(1, name, 70, 60, 40, 40, true, x, y);
-        //this.fortune = fortune;
+        super(name, x, y);
     }
 
     @Override
-    public void death(BaseCharacter target) {
-        // TODO Auto-generated method stub
-        super.death(target);
-    }
-
-    @Override
-    public void GetDamage(BaseCharacter target, int damage) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void attack(BaseCharacter target) {
-        // TODO Auto-generated method stub
-        
+    public void death() {
+        if (this.getHealth() < 1) {
+            System.out.println("Загубили пацана...");
+        }
     }
 
     @Override
     public String toString() {
         return String.format("Class: %s  Name: %s", this.getClass().getSimpleName(), getName());
 
+    }
+
+    public void step(List<BaseCharacter> list) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
     }
     
 }

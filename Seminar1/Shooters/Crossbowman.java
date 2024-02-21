@@ -2,43 +2,36 @@ package ООП.Seminar1.Shooters;
 
 import java.util.List;
 
-import  ООП.Seminar1.BaseCharacter;
+import ООП.Seminar1.BaseCharacter;
 
-public class Crossbowman extends BaseCharacter implements Shooter{
-    int arrows;
+public class Crossbowman extends Shooters implements ShootSkill{
 
     public Crossbowman(String name, Integer x, Integer y) {
-        super(1, name, 60, 50, 40, 20, true, x, y);
-        //this.arrows = arrows;
+        super(name, x, y);
+        this.arrows = 5;
     }
 
     @Override
-    public void death(BaseCharacter target) {
-        // TODO Auto-generated method stub
-        super.death(target);
+    public void death() {
+        if (this.getHealth() < 1) {
+            System.out.println("Мой арбалет больше никого не прикроет, прощай...");
+        }
     }
-
-    @Override
-    public void GetDamage(BaseCharacter target, int damage) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void attack(BaseCharacter target) {
-        // TODO Auto-generated method stub
-        
-    }
-    
+       
     @Override
     public String toString() {
         return String.format("Class: %s  Name: %s", this.getClass().getSimpleName(), getName());
     }
 
-    @Override
-    public BaseCharacter nearestEnemy(List<BaseCharacter> targets) {
-        // TODO Auto-generated method stub
-        return null;
+    public void step(List<BaseCharacter> list) {
+        if (this.isDead()) {
+            if (this.getArrows() > 1) {
+                this.attac(this.nearestEnemy(list));
+                System.out.printf("Точно в цель! (Имя: %s, Класс: %s, Здоровье: %d)\n", this.getName(), this.getClass().getSimpleName(), this.getHealth());
+            }else {
+                System.out.printf("Мне нужно больше стрел... (Имя: %s, Класс: %s, Здоровье: %d)\n", this.getName(), this.getClass().getSimpleName(), this.getHealth());
+            }
+        }
     }
 
     

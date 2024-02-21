@@ -1,23 +1,26 @@
-package ООП.Seminar1.Warriors;
+package ООП.Seminar1;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ООП.Seminar1.BaseCharacter;
+public class Peasant extends BaseCharacter {
+    int unity;
 
-public class Spearman extends Warriors{
-    protected int resistance;
-
-    public Spearman(String name, Integer x, Integer y) {
+    public Peasant(String name, Integer x, Integer y) {
         super(name, x, y);
-    }   
+        this.speed = 0;
+    }
+
+    public void work(int hour) {
+        stamina -= hour / 4;
+    }
 
     @Override
     public void death() {
         if (this.getHealth() < 1) {
-            System.out.println("Моё копье сломано... Я пал...");
+            System.out.println("Моя служба окончена, Господин...");
         }
-    }    
+    }
 
     @Override
     public String toString() {

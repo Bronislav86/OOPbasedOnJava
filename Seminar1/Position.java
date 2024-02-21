@@ -18,13 +18,9 @@ public class Position {
         return list;
     }
 
-    public Integer getX() {
-        return x;
-    }
+    public Integer getX() {return x;}
 
-    public Integer getY() {
-        return y;
-    }
+    public Integer getY() {return y;}
 
     /**
  * @param position - координаты персонажа

@@ -1,37 +1,32 @@
 package ООП.Seminar1.Megicains;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import  ООП.Seminar1.BaseCharacter;
 
-public class Wizard extends BaseCharacter implements Magican {
-    int mana;
+public class Wizard extends Wizzards implements MagicAttac {
+    protected int mana;
 
-    public Wizard(String name,Integer x, Integer y) {
-        super(1, name, 50, 30, 20, 20, true, x, y);
-        //this.mana = mana;
-    }
-
-    @Override
-    public void attack(BaseCharacter target) {
-        // TODO Auto-generated method stub
-        attack(target);
-    }
-
-    @Override
-    public void GetDamage(BaseCharacter target, int damage) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void death(BaseCharacter target) {
-        // TODO Auto-generated method stub
-        super.death(target);
+    public Wizard(String name, Integer x, Integer y) {
+        super(name, x, y);
     }
 
     @Override
     public String toString() {
         return String.format("Class: %s  Name: %s", this.getClass().getSimpleName(), getName());
 
+    }
+
+    public void death() {
+        if (this.getHealth() < 1) {
+            System.out.println("Бегите, глупцы!..");
+        }        
+    }
+
+    public void step(List<BaseCharacter> list) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
     }
     
 

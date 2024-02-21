@@ -31,15 +31,26 @@ public class BaseHero {
                 this.name, this.hp, this.getClass().getSimpleName());
     }
 
-    public void healed(int Hp) {
-        this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
-    }
+    // public void healed(int Hp) {
+    //     this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
+    // }
 
     public void GetDamage(int damage) {
         if (this.hp - damage > 0) {
             this.hp -= damage;
         }
         // else { die(); }
+    }
+
+    public void getHealing (int heal){
+        if (this.hp < maxHp) {
+            if (this.hp + heal > maxHp) {
+                this.hp = maxHp;
+            }else {
+                this.hp += heal;
+            }
+            
+        }
     }
 
     public void Attack(BaseHero target) {

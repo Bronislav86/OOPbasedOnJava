@@ -10,6 +10,9 @@ public class Magician extends BaseHero {
                 Magician.r.nextInt(100, 200));
         this.maxMana = Magician.r.nextInt(50, 150);
         this.mana = maxMana;
+        this.maxHp = Magician.r.nextInt(50, 150);
+        this.hp = maxHp;
+
     }
 
     public String getInfo() {

@@ -36,25 +36,64 @@ public class Program {
         Random rand = new Random();
         int magicianCount = 0;
         int priestCount = 0;
+        int healCount = 0;
  
 
         List<BaseHero> teams = new ArrayList<>();
         for (int i = 0; i < teamCount; i++) {
             if (rand.nextInt(2) == 0) {
-                teams.add(new Priest());
-                priestCount++;
+                if (healCount <= 2) {
+                    teams.add(new Priest());
+                    priestCount++;
+                    teams.add(new Healer());
+                    healCount++; 
+                } else {
+                    teams.add(new Priest());
+                    priestCount++;
+                }                             
             }
             else{
-                teams.add(new Magician());
-                magicianCount++;
+                if (healCount <= 2) {
+                    teams.add(new Magician());
+                    magicianCount++;
+                    teams.add(new Healer());
+                    healCount++;
+                }else {
+                    teams.add(new Magician());
+                    magicianCount++;
+                }              
             }
 
             System.out.println(teams.get(i).getInfo());
         }
         System.out.println();
-        System.out.printf("magicalCount: %d priestCount: %d \n\n", magicianCount, priestCount);
+        System.out.printf("magicalCount: %d priestCount: %d healCount: %d \n\n", magicianCount, priestCount, healCount);
         
-        // attack
+        System.out.println(teams.get(0).getInfo());
+        System.out.println(teams.get(1).getInfo());
+
+        teams.get(0).Attack(teams.get(1));
+        System.out.println("----------------------");
+
+        System.out.println(teams.get(0).getInfo());
+        System.out.println(teams.get(1).getInfo());
+
+        boolean isHealed = true;
+        
+        while (isHealed) {
+            for (BaseHero unit : teams) {
+                if (unit instanceof Healer) {
+                    ((Healer)(unit)).toHeal(teams.get(1));
+                    isHealed = false;
+                }  
+        }
+        
+        }
+
+        System.out.println("----------------------");
+        System.out.println(teams.get(1).getInfo());
+
+
 
         // #endregion
 

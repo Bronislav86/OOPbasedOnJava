@@ -10,6 +10,8 @@ public class Priest extends BaseHero {
                 Magician.r.nextInt(100, 200));
         this.maxElixir = Magician.r.nextInt(50, 150);
         this.elixir = maxElixir;
+        this.maxHp = Magician.r.nextInt(50, 150);
+        this.hp = maxHp;
     }
     
     public String getInfo() {
