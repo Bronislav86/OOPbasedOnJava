@@ -26,8 +26,7 @@ public class Raider extends Warriors {
     }
 
     public void step(List<BaseCharacter> list) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        
     }
     
 }

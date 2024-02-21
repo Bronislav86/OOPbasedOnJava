@@ -61,9 +61,10 @@ public abstract class BaseCharacter implements Step{
     public void print() {System.out.println("Уровень: " + level + " Имя: " + name);}
     
     public void GetDamage(int damage) {
-        if (this.health - damage > maxHealth) {
+        if (this.health > damage) {
             this.health -= damage;
             this.setHealth(this.health);
+            System.out.println(this.name + " take damage - " + damage + " hp");
         } else {
             this.death();
         }
@@ -91,7 +92,7 @@ public abstract class BaseCharacter implements Step{
                 target.add(hero);                    
             }
         }
-        return target.peek();
+        return target.remove();
     }
 
     public void getHealing (int heal){

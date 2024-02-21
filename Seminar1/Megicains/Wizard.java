@@ -25,8 +25,7 @@ public class Wizard extends Wizzards implements MagicAttac {
     }
 
     public void step(List<BaseCharacter> list) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        
     }
     
 

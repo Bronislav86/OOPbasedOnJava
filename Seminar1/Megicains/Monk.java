@@ -36,8 +36,7 @@ public class Monk extends Wizzards {
     }
 
     public void step(List<BaseCharacter> list) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        
     }
 
 

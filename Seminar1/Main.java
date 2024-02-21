@@ -61,30 +61,22 @@ public class Main {
         List<BaseCharacter> team2 = new ArrayList<>(teamCreator(9));
 
         for (BaseCharacter unit : team1) {
-            System.out.printf("Имя: %s, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
+            System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(), unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
         }
         System.out.println();
         for (BaseCharacter unit : team2) {
-            System.out.printf("Имя: %s, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
-        }   
-        System.out.println();
+            System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(), unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
+        }
 
-        // Проба метода getInfo
-        System.out.println(team1.get(0).getInfo());
-        System.out.println("------------------");
+        System.out.println();
 
         ArrayList<BaseCharacter> all = new ArrayList<>();
         all.addAll(team1);
         all.addAll(team2);
 
         all.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());    
-        for (BaseCharacter unit : all) {
-            System.out.println(unit.getInfo());
-        }
-        // for (BaseCharacter unit : all) {
-        //     unit.step(all);
-        // }
-        System.out.println("-------------------------------------");
+        
+        System.out.println("-".repeat(56));
 
         for (BaseCharacter unit : all) {
             System.out.printf("Имя: %s, Здоровье: %d, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getHealth(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
@@ -92,10 +84,7 @@ public class Main {
         System.out.println();
 
         for (BaseCharacter element : all) {
-            if (element instanceof Sniper || element instanceof Crossbowman) {
-                element.step(all);
-                break;
-            }
+            element.step(all);
         }
 
         for (BaseCharacter unit : all) {

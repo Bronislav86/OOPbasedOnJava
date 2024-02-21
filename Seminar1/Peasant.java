@@ -29,8 +29,7 @@ public class Peasant extends BaseCharacter {
     }
 
     public void step(List<BaseCharacter> list) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
+        
     }
 
 
