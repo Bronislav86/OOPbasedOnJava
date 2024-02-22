@@ -1,5 +1,7 @@
 package ООП.Seminar1.Megicains;
 
+import java.util.List;
+
 import ООП.Seminar1.BaseCharacter;
 
 abstract public class Wizzards extends BaseCharacter implements MagicAttac {
@@ -16,5 +18,9 @@ abstract public class Wizzards extends BaseCharacter implements MagicAttac {
     public void attac(BaseCharacter target){
         int damage = r.nextInt(5, 15);
         target.GetDamage(damage);
+    }
+
+    public void step(List<BaseCharacter> list, List<BaseCharacter> friends) {
+      
     }
 }

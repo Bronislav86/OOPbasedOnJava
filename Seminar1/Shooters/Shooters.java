@@ -1,6 +1,8 @@
 package ООП.Seminar1.Shooters;
 
 
+import java.util.List;
+
 import ООП.Seminar1.BaseCharacter;
 
 abstract public class Shooters extends BaseCharacter implements ShootSkill {
@@ -20,5 +22,13 @@ abstract public class Shooters extends BaseCharacter implements ShootSkill {
         this.arrows--;
         target.GetDamage(damage);
     }
+
+    public void step(List<BaseCharacter> list, List<BaseCharacter> friends) {
+        if (!isDead() || getArrows() <= 0) return;
+                attac(nearestEnemy(list));
+                System.out.printf("\'Точно в цель!\' Say's %s, Класс: %s, Здоровье: %d\n", this.getName(), this.getClass().getSimpleName(), this.getHealth()); //переделать в toString
+    }
+        
+    
     
 }

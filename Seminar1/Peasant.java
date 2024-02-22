@@ -28,7 +28,7 @@ public class Peasant extends BaseCharacter {
 
     }
 
-    public void step(List<BaseCharacter> list) {
+    public void step(List<BaseCharacter> list, List<BaseCharacter> friends) {
         
     }
 

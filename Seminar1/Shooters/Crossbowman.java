@@ -23,16 +23,7 @@ public class Crossbowman extends Shooters implements ShootSkill{
         return String.format("Class: %s  Name: %s", this.getClass().getSimpleName(), getName());
     }
 
-    public void step(List<BaseCharacter> list) {
-        if (this.isDead()) {
-            if (this.getArrows() > 1) {
-                this.attac(this.nearestEnemy(list));
-                System.out.printf("\'Точно в цель!\' Say's %s, Класс: %s, Здоровье: %d\n", this.getName(), this.getClass().getSimpleName(), this.getHealth());
-            }else {
-                System.out.printf("Мне нужно больше стрел... (Имя: %s, Класс: %s, Здоровье: %d)\n", this.getName(), this.getClass().getSimpleName(), this.getHealth());
-            }
-        }
-    }
+
 
     
 }

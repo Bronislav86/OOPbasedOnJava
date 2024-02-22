@@ -53,6 +53,12 @@ import ООП.Seminar1.Warriors.Spearman;
   Крестьянин = 0, маги=1, пехота=2, лучники=3. В мэйне сделать так, чтобы сначала делали ход персонажи с наивысшей
   инициативой из обеих команд а с наименьшей в конце.
 
+  Семинар 4:
+  Реализовать метод step() пехоты. Первое проверяем живы ли мы, потом ищем ближайшего противника. Если противник в
+  соседней клетке, наносим повреждение. Иначе двигаемся в сторну противника. Алгоритм движения, если dX>dY двигаемся
+  по x иначе по y. dX и dY (разница наших координат и ближайшего противника) знаковые, от знака зависит направление.
+  По своим не ходить!
+
 */
 public class Main {
     public static void main(String[] args) {
@@ -78,13 +84,15 @@ public class Main {
         
         System.out.println("-".repeat(56));
 
-        for (BaseCharacter unit : all) {
-            System.out.printf("Имя: %s, Здоровье: %d, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getHealth(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
-        }   
-        System.out.println();
+        // for (BaseCharacter unit : all) {
+        //     System.out.printf("Имя: %s, Здоровье: %d, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getHealth(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
+        // }   
+        // System.out.println();
 
         for (BaseCharacter element : all) {
-            element.step(all);
+            if (team1.contains(element)) {
+                element.step(team2, team1);
+            } else element.step(team1, team2);
         }
 
         for (BaseCharacter unit : all) {
@@ -92,7 +100,7 @@ public class Main {
         }   
         System.out.println();
     
-
+        all.get(0).nearestEnemy(team2);
 
 
 }

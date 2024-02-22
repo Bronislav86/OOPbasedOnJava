@@ -18,11 +18,8 @@ public abstract class BaseCharacter implements Step{
     protected int stamina;
     protected Boolean status;
     protected int maxHealth;
-    protected int speed;
-    
-    
-
-    protected Position position;
+    protected int speed;    
+    public Position position;
 
     public List<BaseCharacter> units;
 
@@ -61,13 +58,9 @@ public abstract class BaseCharacter implements Step{
     public void print() {System.out.println("Уровень: " + level + " Имя: " + name);}
     
     public void GetDamage(int damage) {
-        if (this.health > damage) {
-            this.health -= damage;
-            this.setHealth(this.health);
-            System.out.println(this.name + " take damage - " + damage + " hp");
-        } else {
-            this.death();
-        }
+        this.health -= damage;
+            if (health < 0) health = 0;
+            if (health >= maxHealth) health = maxHealth;            
     }
 
     public void death(){
@@ -84,15 +77,15 @@ public abstract class BaseCharacter implements Step{
     }
 
     public BaseCharacter nearestEnemy (List<BaseCharacter> targets) {
-        Queue<BaseCharacter> target = new LinkedList<>();
+        BaseCharacter target = null;
         double minDistance = 10;
         for (BaseCharacter hero : targets) {
-            if (position.getDistanse(hero) < minDistance) {
+            if (position.getDistanse(hero) < minDistance && hero.isDead()) {
                 minDistance = position.getDistanse(hero);
-                target.add(hero);                    
+                target = hero;                    
             }
         }
-        return target.remove();
+        return target;
     }
 
     public void getHealing (int heal){
