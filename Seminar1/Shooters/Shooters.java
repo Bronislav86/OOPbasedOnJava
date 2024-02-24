@@ -2,6 +2,7 @@ package ООП.Seminar1.Shooters;
 
 
 import java.util.List;
+import java.util.Scanner;
 
 import ООП.Seminar1.BaseCharacter;
 
@@ -24,9 +25,16 @@ abstract public class Shooters extends BaseCharacter implements ShootSkill {
     }
 
     public void step(List<BaseCharacter> list, List<BaseCharacter> friends) {
-        if (!isDead() || getArrows() <= 0) return;
-                attac(nearestEnemy(list));
-                System.out.printf("\'Точно в цель!\' Say's %s, Класс: %s, Здоровье: %d\n", this.getName(), this.getClass().getSimpleName(), this.getHealth()); //переделать в toString
+        Scanner scan = new Scanner(System.in);
+        String oneStep = scan.nextLine();
+
+            if (oneStep == "") {
+
+                if (!isDead() || getArrows() <= 0) return;
+                    attac(nearestEnemy(list));
+                    System.out.printf("%s, Класс: %s, Атакую цель %s, класс %s, hp %d\n", this.getName(), this.getClass().getSimpleName(), nearestEnemy(list).getName(), nearestEnemy(list).getClass().getSimpleName(), nearestEnemy(list).getHealth()); //переделать в toString
+        }
+
     }
         
     
