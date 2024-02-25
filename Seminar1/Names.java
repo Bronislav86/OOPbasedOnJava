@@ -2,7 +2,8 @@ package ООП.Seminar1;
 
 
 public enum Names {
-    Ivan, Olga, Kiril, Anton, Sergey, Svetlana, Oleg, Igor, Aria;
+    Ivan, Olga, Kirill, Anton, Sergey, Svetlana, Oleg, Igor, Aria, Egor, Milana, David, Elena, Nikita, Maria, Stas, Katya, 
+    Misha, Sonya, Maksim;
     
 }
 

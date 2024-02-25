@@ -19,12 +19,6 @@ public class Spearman extends Warriors{
         }
     }    
 
-    @Override
-    public String toString() {
-        return String.format("Class: %s  Name: %s", this.getClass().getSimpleName(), getName());
-
-    }
-
     public void step(List<BaseCharacter> list) {
         
     }

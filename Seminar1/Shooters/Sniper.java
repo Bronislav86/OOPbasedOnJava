@@ -18,10 +18,6 @@ public class Sniper extends Shooters implements ShootSkill {
         }
     }    
 
-    @Override
-    public String toString() {
-        return String.format("Class: %s  Name: %s", this.getClass().getSimpleName(), getName());
-    }
 
     
 }

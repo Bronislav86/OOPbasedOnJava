@@ -1,8 +1,6 @@
 package ООП.Seminar1;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import java.util.Random;
 
 
@@ -53,18 +51,23 @@ public abstract class BaseCharacter implements Step{
 
     public int getStamina() {return stamina;}
 
+    public String toString() {
+        return String.format("Class: %s  Name: %s hp: %s, Position %s", getClass().getSimpleName(), getName(), getHealth(), position.getPosition());
+    }
+
     public Boolean getStatus() {return status;}
-       
-    public void print() {System.out.println("Уровень: " + level + " Имя: " + name);}
-    
+           
     public void GetDamage(int damage) {
         this.health -= damage;
-            if (health < 0) health = 0;
+            if (health < 0) {
+                health = 0;
+                death();
+            }
             if (health >= maxHealth) health = maxHealth;            
     }
 
     public void death(){
-        if (this.getHealth() < 1) {
+        if (getHealth() < 1) {
             System.out.println("Ваш персонаж мертв");
         }
     }
@@ -72,7 +75,7 @@ public abstract class BaseCharacter implements Step{
  * @return Этот метод сообщает Имя, Уровень здоровья, Координаты и Статус персонажа
  */
     public String getInfo() {
-        String resStr = new String(this.getName() + this.getHealth() + this.position.getPosition() + this.getStatus());
+        String resStr = new String(getName() + getHealth() + position.getPosition() + getStatus());
         return resStr;
     }
 

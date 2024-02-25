@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
-
+import java.util.Scanner;
 
 import ООП.Seminar1.Megicains.Monk;
 import ООП.Seminar1.Megicains.Wizard;
@@ -19,59 +19,65 @@ import ООП.Seminar1.Warriors.Spearman;
 Создать абстрактный класс и иерархию наследников.
  */
 
- /*Крестьянин:      Разбойник:              Копейщик:
-  - Здоровье        - ID                    - ID
-  - Сила            - Имя                   - Имя
-  - Ловкость        - Здоровье              - Здоровье
-  - Выносливость    - Сила                  - Сила
-  - Вид оружия      - Ловкость              - Выносливость
-  - Уровень         - Выносливость          - Вид оружия
-  - ID              - Вид оружиня           - Защита
-  - Имя             
+/*Крестьянин:      Разбойник:              Копейщик:
+ - Здоровье        - ID                    - ID
+ - Сила            - Имя                   - Имя
+ - Ловкость        - Здоровье              - Здоровье
+ - Выносливость    - Сила                  - Сила
+ - Вид оружия      - Ловкость              - Выносливость
+ - Уровень         - Выносливость          - Вид оружия
+ - ID              - Вид оружиня           - Защита
+ - Имя             
 
-  Снайпер           Арбалетчик:             Колдун:             Монах:
-  - ID              - ID                    - ID                - ID
-  - Имя             - Имя                   - Имя               - Имя
-  - Здоровье        - Здоровье              - Здоровье          - Здоровье
-  - Сила            - Выносливость          - Интеллект         - Выносливость
-  - Ловкость        - Вид оружия            - Выносливость      - Вид оружия
-  - Выносливость    - Меткость              - Вид оружия        - Интеллект
-  - Вид оружия      - Количество стрел      - Мана              - Вера
-  - Меткость        - Скорость стрельбы                         - Чакра
-  - Маскировка      
+ Снайпер           Арбалетчик:             Колдун:             Монах:
+ - ID              - ID                    - ID                - ID
+ - Имя             - Имя                   - Имя               - Имя
+ - Здоровье        - Здоровье              - Здоровье          - Здоровье
+ - Сила            - Выносливость          - Интеллект         - Выносливость
+ - Ловкость        - Вид оружия            - Выносливость      - Вид оружия
+ - Выносливость    - Меткость              - Вид оружия        - Интеллект
+ - Вид оружия      - Количество стрел      - Мана              - Вера
+ - Меткость        - Скорость стрельбы                         - Чакра
+ - Маскировка      
 
-  Семинар 3:
-  Добавить в файл интерфейса метод void step() это будет основной метод взаимодействыия с объектами.
-  Добавить интерфейс в базовый абстрактный класс. Реализовать этот метод во всех классах наследниках.
-  Для начала просто заглушкой.
+ Семинар 3:
+ Добавить в файл интерфейса метод void step() это будет основной метод взаимодействыия с объектами.
+ Добавить интерфейс в базовый абстрактный класс. Реализовать этот метод во всех классах наследниках.
+ Для начала просто заглушкой.
 
-  Доработать классы лучников. Лучник должен во первых проверить жив ли он и есть ли у него стрелы, если нет
-  то завершить метод. Есль всё да, то найти ближайшего противника и выстрелить по немы и, соответственно
-  потратить одну стрелу. Реализовать весь функционал лучников в методе step().
+ Доработать классы лучников. Лучник должен во первых проверить жив ли он и есть ли у него стрелы, если нет
+ то завершить метод. Есль всё да, то найти ближайшего противника и выстрелить по немы и, соответственно
+ потратить одну стрелу. Реализовать весь функционал лучников в методе step().
 
-  Добавить в абстрактный класс int поле инициатива. В классах наследников инициализировать это поле.
-  Крестьянин = 0, маги=1, пехота=2, лучники=3. В мэйне сделать так, чтобы сначала делали ход персонажи с наивысшей
-  инициативой из обеих команд а с наименьшей в конце.
+ Добавить в абстрактный класс int поле инициатива. В классах наследников инициализировать это поле.
+ Крестьянин = 0, маги=1, пехота=2, лучники=3. В мэйне сделать так, чтобы сначала делали ход персонажи с наивысшей
+ инициативой из обеих команд а с наименьшей в конце.
 
-  Семинар 4:
-  Реализовать метод step() пехоты. Первое проверяем живы ли мы, потом ищем ближайшего противника. Если противник в
-  соседней клетке, наносим повреждение. Иначе двигаемся в сторну противника. Алгоритм движения, если dX>dY двигаемся
-  по x иначе по y. dX и dY (разница наших координат и ближайшего противника) знаковые, от знака зависит направление.
-  По своим не ходить!
+ Семинар 4:
+ Реализовать метод step() пехоты. Первое проверяем живы ли мы, потом ищем ближайшего противника. Если противник в
+ соседней клетке, наносим повреждение. Иначе двигаемся в сторну противника. Алгоритм движения, если dX>dY двигаемся
+ по x иначе по y. dX и dY (разница наших координат и ближайшего противника) знаковые, от знака зависит направление.
+ По своим не ходить!
 
 */
 public class Main {
     public static void main(String[] args) {
-        
+
         List<BaseCharacter> team1 = new ArrayList<>(teamCreator(0));
         List<BaseCharacter> team2 = new ArrayList<>(teamCreator(9));
 
+        System.out.println("Команда №1: ");
         for (BaseCharacter unit : team1) {
-            System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(), unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
+            System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(),
+                    unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
         }
+
         System.out.println();
+
+        System.out.println("Команда №2: ");
         for (BaseCharacter unit : team2) {
-            System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(), unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
+            System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(),
+                    unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
         }
 
         System.out.println();
@@ -80,36 +86,44 @@ public class Main {
         all.addAll(team1);
         all.addAll(team2);
 
-        all.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());    
-        
+        all.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
+
         System.out.println("-".repeat(56));
 
-        // for (BaseCharacter unit : all) {
-        //     System.out.printf("Имя: %s, Здоровье: %d, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getHealth(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
-        // }   
-        // System.out.println();
-
-        for (BaseCharacter element : all) {
-            if (team1.contains(element)) {
-                element.step(team2, team1);
-            } else element.step(team1, team2);
+        Scanner scan = new Scanner(System.in);
+        boolean work = true;                
+        while (work) { 
+            if (scan.nextLine() == ""){                         
+        
+                for (BaseCharacter element : all) {
+                    if (team1.contains(element)) {
+                        element.step(team2, team1);
+                    } else
+                        element.step(team1, team2);
+                }
+            } else work = false;       
         }
+        scan.close();
+        
 
         for (BaseCharacter unit : all) {
-            System.out.printf("Имя: %s, Здоровье: %d, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getHealth(), unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
-        }   
+            System.out.printf("Имя: %s, Здоровье: %d, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getHealth(),
+                    unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
+        }
+
         System.out.println();
-    
-        all.get(0).nearestEnemy(team2);
 
+        System.out.println("-".repeat(56));
 
-}
+        System.out.println(all.get(0).nearestEnemy(team2).toString());
 
-    private static String fillName(){
-        return String.valueOf(Names.values()[new Random().nextInt(Names.values().length-1)]);
     }
 
-    private static ArrayList<BaseCharacter> teamCreator(int y){
+    private static String fillName() {
+        return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
+    }
+
+    private static ArrayList<BaseCharacter> teamCreator(int y) {
         ArrayList<BaseCharacter> team = new ArrayList<BaseCharacter>();
         int teamCount = 10;
         for (int i = 0; i < teamCount; i++) {
@@ -140,5 +154,4 @@ public class Main {
         return team;
     }
 
-    
 }

@@ -25,15 +25,10 @@ abstract public class Shooters extends BaseCharacter implements ShootSkill {
     }
 
     public void step(List<BaseCharacter> list, List<BaseCharacter> friends) {
-        Scanner scan = new Scanner(System.in);
-        String oneStep = scan.nextLine();
 
-            if (oneStep == "") {
-
-                if (!isDead() || getArrows() <= 0) return;
-                    attac(nearestEnemy(list));
-                    System.out.printf("%s, Класс: %s, Атакую цель %s, класс %s, hp %d\n", this.getName(), this.getClass().getSimpleName(), nearestEnemy(list).getName(), nearestEnemy(list).getClass().getSimpleName(), nearestEnemy(list).getHealth()); //переделать в toString
-        }
+        if (!isDead() || getArrows() <= 0) return;
+            attac(nearestEnemy(list));
+            System.out.println(toString());
 
     }
         
