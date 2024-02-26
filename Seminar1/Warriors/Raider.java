@@ -1,9 +1,5 @@
 package ООП.Seminar1.Warriors;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import ООП.Seminar1.BaseCharacter;
 
 public class Raider extends Warriors {
     protected int fortune;
@@ -19,8 +15,9 @@ public class Raider extends Warriors {
         }
     }
 
-    public void step(List<BaseCharacter> list) {
-        
+    public String getInfo() {
+        return "Разбойник";
     }
+
     
 }

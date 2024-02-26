@@ -6,7 +6,7 @@ import java.util.List;
 public class Position {
     protected Integer x, y;
 
-        public Position(Integer x, Integer y) {
+        public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -22,11 +22,11 @@ public class Position {
 
     public int getY() {return y;}
 
-    public void setY(Integer y) {
+    public void setY(int y) {
         this.y = y;
     }
 
-    public void setX(Integer x) {
+    public void setX(int x) {
         this.x = x;
     }
 
@@ -36,14 +36,13 @@ public class Position {
  */
 
  public double getDistanse (BaseCharacter target) {
-    double targetDistanse = 0;
-        targetDistanse = Math.sqrt((Math.pow(target.position.getX() - this.getX(), 2)) + (Math.pow(target.position.getY() - this.getY(), 2)));
+        double targetDistanse = Math.sqrt(Math.pow(this.getX() - target.position.getX(), 2)) + (Math.pow(this.getY() - target.position.getY(), 2));
     return targetDistanse;
 }
 
 public Position getDiff (Position targetPos) {
-
-    return new Position(x - targetPos.getX(), y - targetPos.getY());
+    Position diff = new Position(x - targetPos.getX(), y - targetPos.getY());
+    return diff;
 }
 
 public boolean equals(Position target) {

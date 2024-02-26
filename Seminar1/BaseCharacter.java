@@ -23,7 +23,7 @@ public abstract class BaseCharacter implements Step{
 
     static {BaseCharacter.r = new Random();    }
 
-    public BaseCharacter(String name, Integer x, Integer y) {
+    public BaseCharacter(String name, int x, int y) {
         this.level = 1;
         this.name = name;
         this.health = 50;
@@ -31,7 +31,7 @@ public abstract class BaseCharacter implements Step{
         this.agility = 20;
         this.stamina = 30;
         this.maxHealth = health;
-        this.speed = speed;
+        this.speed = 3;
         this.status = true;
         this.position = new Position(x, y);
     }
@@ -52,7 +52,8 @@ public abstract class BaseCharacter implements Step{
     public int getStamina() {return stamina;}
 
     public String toString() {
-        return String.format("Class: %s  Name: %s hp: %s, Position %s", getClass().getSimpleName(), getName(), getHealth(), position.getPosition());
+        return name +  ", Hp: " + health + ", ⚔: ";
+        //String.format("Class: %s  Name: %s hp: %s, Position %s", getClass().getSimpleName(), getName(), getHealth(), position.getPosition());
     }
 
     public Boolean getStatus() {return status;}
@@ -75,13 +76,12 @@ public abstract class BaseCharacter implements Step{
  * @return Этот метод сообщает Имя, Уровень здоровья, Координаты и Статус персонажа
  */
     public String getInfo() {
-        String resStr = new String(getName() + getHealth() + position.getPosition() + getStatus());
-        return resStr;
+        return "";
     }
 
     public BaseCharacter nearestEnemy (List<BaseCharacter> targets) {
         BaseCharacter target = null;
-        double minDistance = 10;
+        double minDistance = Double.MAX_VALUE;
         for (BaseCharacter hero : targets) {
             if (position.getDistanse(hero) < minDistance && hero.isDead()) {
                 minDistance = position.getDistanse(hero);

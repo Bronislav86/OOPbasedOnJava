@@ -2,11 +2,10 @@ package ООП.Seminar1.Shooters;
 
 
 import java.util.List;
-import java.util.Scanner;
 
 import ООП.Seminar1.BaseCharacter;
 
-abstract public class Shooters extends BaseCharacter implements ShootSkill {
+abstract public class Shooters extends BaseCharacter {
     protected Integer arrows;
     
     public Integer getArrows() {return arrows;}
@@ -26,10 +25,8 @@ abstract public class Shooters extends BaseCharacter implements ShootSkill {
 
     public void step(List<BaseCharacter> list, List<BaseCharacter> friends) {
 
-        if (!isDead() || getArrows() <= 0) return;
+        if (getHealth() <= 0 || getArrows() <= 0) return;
             attac(nearestEnemy(list));
-            System.out.println(toString());
-
     }
         
     

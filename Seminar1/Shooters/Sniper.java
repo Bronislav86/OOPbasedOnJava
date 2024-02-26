@@ -1,14 +1,14 @@
 package ООП.Seminar1.Shooters;
 
-import java.util.List;
-
-import ООП.Seminar1.BaseCharacter;
-
-public class Sniper extends Shooters implements ShootSkill {    
+public class Sniper extends Shooters{    
 
     public Sniper(String name, Integer x, Integer y) {
         super(name, x, y);
-        this.arrows = 5;
+        this.arrows = 50;
+    }
+
+    public String getInfo() {
+        return "Снайпер";
     }
 
     @Override

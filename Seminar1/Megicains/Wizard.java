@@ -1,14 +1,15 @@
 package ООП.Seminar1.Megicains;
 
-import java.util.List;
 
-import  ООП.Seminar1.BaseCharacter;
-
-public class Wizard extends Wizzards implements MagicAttac {
+public class Wizard extends Wizzards {
     protected int mana;
 
     public Wizard(String name, Integer x, Integer y) {
         super(name, x, y);
+    }
+
+    public String getInfo() {
+        return "Волшебник";
     }
 
     public void death() {
