@@ -52,8 +52,7 @@ public abstract class BaseCharacter implements Step{
     public int getStamina() {return stamina;}
 
     public String toString() {
-        return name +  ", Hp: " + health + ", ⚔: ";
-        //String.format("Class: %s  Name: %s hp: %s, Position %s", getClass().getSimpleName(), getName(), getHealth(), position.getPosition());
+        return name +  ", Hp: " + health + ", St: " + strength;
     }
 
     public Boolean getStatus() {return status;}

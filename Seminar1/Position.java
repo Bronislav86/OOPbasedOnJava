@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Position {
-    protected Integer x, y;
+    protected int x, y;
 
         public Position(int x, int y) {
         this.x = x;
