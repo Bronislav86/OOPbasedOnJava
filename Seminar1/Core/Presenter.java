@@ -56,7 +56,6 @@ public class Presenter {
 
         allTeam.addAll(holyTeam);
         allTeam.addAll(darkTeam);
-
         allTeam.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
 
         System.out.println("-".repeat(56));
@@ -92,7 +91,6 @@ public class Presenter {
                 else unit.step(holyTeam, darkTeam);
             }            
         }
-        scanner.close();
     }
 
    

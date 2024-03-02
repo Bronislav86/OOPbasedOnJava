@@ -19,9 +19,13 @@ public abstract class Warriors extends BaseCharacter {
     public Warriors() {
     }
 
+    public void setAnger(int anger) {this.anger = anger;}
+
+    public int getAnger() {return anger;}
+
     public void attac(BaseCharacter target){
         int damage = r.nextInt(5, 15);
-        this.anger--;
+        anger--;
         target.GetDamage(damage);
     }
     
@@ -29,7 +33,7 @@ public abstract class Warriors extends BaseCharacter {
 
         if (getHealth() < 0) return;
             BaseCharacter unit = nearestEnemy(targets);
-            if (position.getDistanse(unit) < 2) {
+            if (position.getDistanse(unit.position) < 2 && getAnger() > 0) {
                 attac(unit);
                 return;
             }
@@ -39,15 +43,18 @@ public abstract class Warriors extends BaseCharacter {
                 position.setX(position.getX() + (diff.getX() < 0 ? 1 : -1));
             } else position.setY(position.getY() + (diff.getY() < 0 ? 1 : -1));
             boolean flag = false;
-            for (ООП.Seminar1.Units.BaseCharacter n : friends) {
+            for (BaseCharacter n : friends) {
                 if (n.position.equals(position) && n.getHealth() > 0) {
                     flag = true;
                     break;
                 }
             }
-            if (flag) this.position = currentPos;
+            if (flag) position = currentPos;
 
                 
     }
+
+    @Override
+    public String toString() {return name +  ", Hp: " + health + ", St: " + strength + ", Anger: " + anger;}
 
 }

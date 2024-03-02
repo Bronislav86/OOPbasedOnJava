@@ -37,18 +37,18 @@ public class Position {
  * @return - Возвращает расстояние до цели
  */
 
- public double getDistanse (BaseCharacter target) {
-        double targetDistanse = Math.sqrt(Math.pow(target.position.getX() - getX(), 2)) + (Math.pow(target.position.getY() - getY(), 2));
+ public double getDistanse (Position target) {
+        double targetDistanse = Math.sqrt(Math.pow(target.x - x, 2)) + (Math.pow(target.y - y, 2));
     return targetDistanse;
 }
 
 public Position getDiff (Position targetPos) {
-    Position diff = new Position(x - targetPos.getX(), y - targetPos.getY());
+    Position diff = new Position(x - targetPos.x, y - targetPos.y);
     return diff;
 }
 
 public boolean equals(Position target) {
-    return x == target.getX() && y == target.getY(); 
+    return x == target.x && y == target.y; 
 }
   
 }

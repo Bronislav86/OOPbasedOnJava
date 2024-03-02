@@ -4,7 +4,7 @@ public class Sniper extends Shooters{
 
     public Sniper(String name, Integer x, Integer y) {
         super(name, x, y);
-        this.arrows = 50;
+        this.maxArrows = arrows = 50;
     }
 
     public Sniper() {

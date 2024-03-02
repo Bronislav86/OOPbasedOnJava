@@ -4,11 +4,11 @@ public class Crossbowman extends Shooters{
 
     public Crossbowman(String name, Integer x, Integer y) {
         super(name, x, y);
-        this.arrows = 50;
+        this.maxArrows = arrows = 50;
     }
 
     public Crossbowman (){
-        
+
     }
 
     public String getInfo() {

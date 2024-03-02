@@ -44,34 +44,35 @@ public abstract class Wizzards extends BaseCharacter {
         }
         if (count > 3) {
             flag = true;
-            System.out.println("Флаг устанволен!");
+            //System.out.println("Флаг устанволен!");
         }
         if (flag && mana == maxMana) {
             listOfDeads.sort((u1, u2) -> u2.getSpeed() - u1.getSpeed());
-            list.getFirst().setHealth(maxHealth);
+            list.getFirst().setHealth(maxHealth/2);
             mana = 0;
             flag = false;
-            System.out.printf("%s %s %s %s\n", name, getClass().getSimpleName(), "Воскресил", list.getFirst().getName());
+            //System.out.printf("%s %s %s %s\n", name, getClass().getSimpleName(), "Воскресил", list.getFirst().getName());
             return;
         }
 
         if (flag) {
             mana++;
-            System.out.printf("%s %s %s\n", name, getClass().getSimpleName(), "Жду ману...");
-
+            //System.out.printf("%s %s %s\n", name, getClass().getSimpleName(), "Жду ману...");
             return;
         }
         if (mana < 2) {
             mana++;
-            System.out.printf("%s %s %s\n", name, getClass().getSimpleName(), "Жду ману...");
-
+            //System.out.printf("%s %s %s\n", name, getClass().getSimpleName(), "Жду ману...");
             return;
         }
         attac(list.getFirst());
-        System.out.printf("%s %s %s %s\n", name, getClass().getSimpleName(), "Лечу", list.getFirst().getName());
-
-
+        //System.out.printf("%s %s %s %s\n", name, getClass().getSimpleName(), "Лечу", list.getFirst().getName());
         mana -= 2;
 
     }
+
+    @Override
+    public String toString() {return name +  ", Hp: " + health + ", St: " + strength + ", Mana: " + mana;}
+
+
 }

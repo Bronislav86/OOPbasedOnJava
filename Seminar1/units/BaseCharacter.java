@@ -83,8 +83,8 @@ public abstract class BaseCharacter implements Step, Model{
         BaseCharacter target = null;
         double minDistance = Double.MAX_VALUE;
         for (BaseCharacter hero : targets) {
-            if (position.getDistanse(hero) < minDistance && !hero.isDead()) {
-                minDistance = position.getDistanse(hero);
+            if (position.getDistanse(hero.position) < minDistance && !hero.isDead()) {
+                minDistance = position.getDistanse(hero.position);
                 target = hero;                    
             }
         }

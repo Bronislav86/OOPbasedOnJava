@@ -1,14 +1,11 @@
 package ООП.Seminar1;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 import ООП.Seminar1.Core.View;
 import ООП.Seminar1.MyInterface.Names;
 import ООП.Seminar1.Units.BaseCharacter;
-import ООП.Seminar1.Units.Model;
 import ООП.Seminar1.Units.Peasant;
 import ООП.Seminar1.Units.Megicains.Monk;
 import ООП.Seminar1.Units.Megicains.Wizard;
@@ -78,7 +75,7 @@ public class Main {
 
         myPresenter.startGame();
 
-        
+
     }
     private static String fillName() {
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
