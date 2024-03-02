@@ -36,7 +36,7 @@ public class Position {
  */
 
  public double getDistanse (BaseCharacter target) {
-        double targetDistanse = Math.sqrt(Math.pow(this.getX() - target.position.getX(), 2)) + (Math.pow(this.getY() - target.position.getY(), 2));
+        double targetDistanse = Math.sqrt(Math.pow(target.position.getX() - getX(), 2)) + (Math.pow(target.position.getY() - getY(), 2));
     return targetDistanse;
 }
 

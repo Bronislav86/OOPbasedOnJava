@@ -36,10 +36,7 @@ public abstract class BaseCharacter implements Step{
         this.position = new Position(x, y);
     }
 
-    public String getName(){
-        String str = new String(this.name);
-        return str;
-    }
+    public String getName(){return name;}
 
     public int getSpeed() {return speed;}
 
@@ -58,7 +55,7 @@ public abstract class BaseCharacter implements Step{
     public Boolean getStatus() {return status;}
            
     public void GetDamage(int damage) {
-        this.health -= damage;
+        health -= damage;
             if (health < 0) {
                 health = 0;
                 death();
@@ -74,15 +71,13 @@ public abstract class BaseCharacter implements Step{
 /**
  * @return Этот метод сообщает Имя, Уровень здоровья, Координаты и Статус персонажа
  */
-    public String getInfo() {
-        return "";
-    }
+    public String getInfo() {return "";}
 
     public BaseCharacter nearestEnemy (List<BaseCharacter> targets) {
         BaseCharacter target = null;
         double minDistance = Double.MAX_VALUE;
         for (BaseCharacter hero : targets) {
-            if (position.getDistanse(hero) < minDistance && hero.isDead()) {
+            if (position.getDistanse(hero) < minDistance && !hero.isDead()) {
                 minDistance = position.getDistanse(hero);
                 target = hero;                    
             }
@@ -90,23 +85,11 @@ public abstract class BaseCharacter implements Step{
         return target;
     }
 
-    public void getHealing (int heal){
-        if (this.health < maxHealth) {
-            if (this.health + heal > maxHealth) {
-                this.health = maxHealth;
-            }else {
-                this.health += heal;
-            }
-            
-        }
-    }
-
     public boolean isDead(){
-        if (this.getHealth() <= 0) {
-            return false;
+        if (getHealth() <= 0) {
+            return true;
         }
-        return true;
+        return false;
     }
 
-    public void attac(BaseCharacter target) {    }
 }

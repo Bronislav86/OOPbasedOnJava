@@ -1,4 +1,4 @@
-package ООП.Seminar1.Warriors;
+package ООП.Seminar1.units.Warriors;
 
 public class Spearman extends Warriors{
     protected int resistance;

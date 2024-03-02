@@ -1,10 +1,10 @@
-package ООП.Seminar1.Shooters;
+package ООП.Seminar1.units.Shooters;
 
 
-import java.util.List;
+import java.util.ArrayList;
 
 import ООП.Seminar1.BaseCharacter;
-import ООП.Seminar1.Peasant;
+import ООП.Seminar1.units.Peasant;
 
 abstract public class Shooters extends BaseCharacter {
     protected Integer arrows;
@@ -24,17 +24,16 @@ abstract public class Shooters extends BaseCharacter {
     }
 
     @Override
-    public String toString() {
-        return name +  ", Hp: " + health + ", St: " + strength + ", Arrows: " + arrows;
-    }
+    public String toString() {return name +  ", Hp: " + health + ", St: " + strength + ", Arrows: " + arrows;}
 
-    public void step(List<BaseCharacter> list, List<BaseCharacter> friends) {
+    public void step(ArrayList<BaseCharacter> targets, ArrayList<BaseCharacter> friends) {
 
         if (getHealth() <= 0 || getArrows() <= 0) return;
-            attac(nearestEnemy(list));
+            attac(nearestEnemy(targets));
             for (BaseCharacter unit : friends) {
                 if (unit.getInfo().equals("Фермер") && !((Peasant)unit).flag) {
                     ((Peasant)unit).flag = true;
+                    arrows++;
                     return;
                 }
             }

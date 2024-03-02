@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import ООП.Seminar1.Megicains.Monk;
-import ООП.Seminar1.Megicains.Wizard;
-import ООП.Seminar1.Shooters.Crossbowman;
-import ООП.Seminar1.Shooters.Sniper;
-import ООП.Seminar1.Warriors.Raider;
-import ООП.Seminar1.Warriors.Spearman;
+import ООП.Seminar1.units.Peasant;
+import ООП.Seminar1.units.Megicains.Monk;
+import ООП.Seminar1.units.Megicains.Wizard;
+import ООП.Seminar1.units.Shooters.Crossbowman;
+import ООП.Seminar1.units.Shooters.Sniper;
+import ООП.Seminar1.units.Warriors.Raider;
+import ООП.Seminar1.units.Warriors.Spearman;
 
 /*
 Проанализировать персонажей "Крестьянин, Разбойник, Снайпер, Колдун, Копейщик, Арбалетчик, Монах".
@@ -60,9 +61,9 @@ import ООП.Seminar1.Warriors.Spearman;
 
 */
 public class Main {
-    public static List<BaseCharacter> holyTeam = new ArrayList<>(teamCreator(1));
-    public static List<BaseCharacter> darkTeam = new ArrayList<>(teamCreator(10));
-    public static ArrayList<BaseCharacter> allTeam = new ArrayList<>();
+    public static ArrayList<BaseCharacter> holyTeam = new ArrayList<BaseCharacter>(teamCreator(1));
+    public static ArrayList<BaseCharacter> darkTeam = new ArrayList<BaseCharacter>(teamCreator(10));
+    public static ArrayList<BaseCharacter> allTeam = new ArrayList<BaseCharacter>();
     
     public static void main(String[] args) {
         
@@ -71,7 +72,6 @@ public class Main {
             System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(),
                     unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
         }
-
         System.out.println();
 
         System.out.println("Команда №2: ");
@@ -79,7 +79,6 @@ public class Main {
             System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(),
                     unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
         }
-
         System.out.println();
 
         allTeam.addAll(holyTeam);
@@ -99,9 +98,11 @@ public class Main {
             for (BaseCharacter unit : holyTeam){
                 summ1HP += unit.getHealth();
             }
+            System.out.println(summ1HP);
             for (BaseCharacter unit : darkTeam){
                 summ2HP += unit.getHealth();
             }
+            System.out.println(summ2HP);
             if (summ1HP == 0){
                 System.out.println("Победила команда darkTeam");
                 flag = false;
@@ -115,17 +116,9 @@ public class Main {
             for (BaseCharacter unit : allTeam) {
                 if (holyTeam.contains(unit)) unit.step(darkTeam, holyTeam);
                 else unit.step(holyTeam, darkTeam);
-            }
-            
+            }            
         }
         scanner.close();
-        
-        
-
-        // for (BaseCharacter unit : allTeam) {
-        //     System.out.printf("Имя: %s, Здоровье: %d, Класс: %s, Координаты: %d,%d\n", unit.getName(), unit.getHealth(),
-        //             unit.getClass().getSimpleName(), unit.position.getX(), unit.position.getY());
-        // }
 
 
 
@@ -167,8 +160,5 @@ public class Main {
         return team;
     }
 
-    // @Override
-    // public String toString() {
-    //     return class().getSimpleName() + name;
-    // }
+
 }

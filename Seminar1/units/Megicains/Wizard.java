@@ -1,5 +1,4 @@
-package ООП.Seminar1.Megicains;
-
+package ООП.Seminar1.units.Megicains;
 
 public class Wizard extends Wizzards {
 

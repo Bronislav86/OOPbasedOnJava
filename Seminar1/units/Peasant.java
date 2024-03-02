@@ -1,10 +1,8 @@
-package ООП.Seminar1;
+package ООП.Seminar1.units;
 
-import java.util.List;
+import java.util.ArrayList;
 
-import ООП.Seminar1.Shooters.Crossbowman;
-import ООП.Seminar1.Shooters.Shooters;
-import ООП.Seminar1.Shooters.Sniper;
+import ООП.Seminar1.BaseCharacter;
 
 public class Peasant extends BaseCharacter {
     int unity;
@@ -39,7 +37,7 @@ public class Peasant extends BaseCharacter {
 
     
 
-    public void step(List<BaseCharacter> targets, List<BaseCharacter> friends) {
+    public void step(ArrayList<BaseCharacter> targets, ArrayList<BaseCharacter> friends) {
   
         if (getHealth() <= 0) return;
         flag = false;

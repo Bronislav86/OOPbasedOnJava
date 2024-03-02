@@ -1,4 +1,4 @@
-package ООП.Seminar1.Megicains;
+package ООП.Seminar1.units.Megicains;
 
 public class Monk extends Wizzards {
 
@@ -16,5 +16,6 @@ public class Monk extends Wizzards {
             System.out.println("Да балгослословит Господь врагов моих. Аминь!..");
         }        
     }
+
 
 }

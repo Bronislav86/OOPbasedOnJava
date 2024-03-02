@@ -1,4 +1,4 @@
-package ООП.Seminar1.Shooters;
+package ООП.Seminar1.units.Shooters;
 
 public class Sniper extends Shooters{    
 

@@ -1,6 +1,6 @@
-package ООП.Seminar1.Warriors;
+package ООП.Seminar1.units.Warriors;
 
-import java.util.List;
+import java.util.ArrayList;
 import ООП.Seminar1.BaseCharacter;
 import ООП.Seminar1.Position;
 
@@ -21,7 +21,7 @@ public abstract class Warriors extends BaseCharacter {
         target.GetDamage(damage);
     }
     
-    public void step(List<BaseCharacter> targets, List<BaseCharacter> friends) {
+    public void step(ArrayList<BaseCharacter> targets, ArrayList<BaseCharacter> friends) {
 
         if (getHealth() < 0) return;
             BaseCharacter unit = nearestEnemy(targets);
