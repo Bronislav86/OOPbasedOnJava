@@ -1,8 +1,11 @@
-package ООП.Seminar1.units.Warriors;
+package ООП.Seminar1.Units.Warriors;
 
 
 public class Raider extends Warriors {
     protected int fortune;
+
+    public Raider() {
+    }
 
     public Raider(String name, Integer x, Integer y) {
         super(name, x, y);

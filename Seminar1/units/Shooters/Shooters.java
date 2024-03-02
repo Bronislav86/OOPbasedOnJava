@@ -1,22 +1,26 @@
-package ООП.Seminar1.units.Shooters;
+package ООП.Seminar1.Units.Shooters;
 
 
 import java.util.ArrayList;
 
-import ООП.Seminar1.BaseCharacter;
-import ООП.Seminar1.units.Peasant;
+import ООП.Seminar1.Units.BaseCharacter;
+import ООП.Seminar1.Units.Peasant;
 
 abstract public class Shooters extends BaseCharacter {
-    protected Integer arrows;
-    
-    public Integer getArrows() {return arrows;}
-
-    public void setArrows(Integer arrows) {this.arrows = arrows;}
 
     public Shooters(String name, Integer x, Integer y) {
         super(name, x, y);
         this.speed = 3;
-    }    
+    }
+
+    protected Integer arrows;
+    
+    public Shooters() {
+    }
+
+    public Integer getArrows() {return arrows;}
+
+    public void setArrows(Integer arrows) {this.arrows = arrows;}    
 
     public void attac(BaseCharacter target){
         int damage = r.nextInt(5, 15);

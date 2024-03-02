@@ -1,10 +1,14 @@
-package ООП.Seminar1.units.Shooters;
+package ООП.Seminar1.Units.Shooters;
 
 public class Crossbowman extends Shooters{
 
     public Crossbowman(String name, Integer x, Integer y) {
         super(name, x, y);
         this.arrows = 50;
+    }
+
+    public Crossbowman (){
+        
     }
 
     public String getInfo() {

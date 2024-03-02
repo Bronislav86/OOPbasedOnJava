@@ -1,10 +1,14 @@
-package ООП.Seminar1.units.Megicains;
+package ООП.Seminar1.Units.Megicains;
 
 public class Monk extends Wizzards {
 
     public Monk(String name, Integer x, Integer y) {
     super(name, x, y);
 
+    }
+
+    public Monk() {
+        
     }
 
     public String getInfo() {

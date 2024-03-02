@@ -1,12 +1,16 @@
-package ООП.Seminar1.units.Megicains;
+package ООП.Seminar1.Units.Megicains;
 
 import java.util.ArrayList;
-import ООП.Seminar1.BaseCharacter;
+
+import ООП.Seminar1.Units.BaseCharacter;
 
 public abstract class Wizzards extends BaseCharacter {
     protected int mana;
     protected int maxMana;
     protected boolean flag;
+
+    public Wizzards() {
+    }
 
     public Wizzards(String name, int x, int y) {
         super(name, x, y);

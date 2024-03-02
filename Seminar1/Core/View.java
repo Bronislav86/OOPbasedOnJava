@@ -1,6 +1,9 @@
-package ООП.Seminar1;
+package ООП.Seminar1.Core;
 
 import java.util.Collections;
+
+import ООП.Seminar1.Main;
+import ООП.Seminar1.Units.BaseCharacter;
 
 public class View {
     private static int step = 1;

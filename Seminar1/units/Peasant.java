@@ -1,13 +1,13 @@
-package ООП.Seminar1.units;
+package ООП.Seminar1.Units;
 
 import java.util.ArrayList;
 
-import ООП.Seminar1.BaseCharacter;
-
 public class Peasant extends BaseCharacter {
-    int unity;
     int arrow;
     public boolean flag;
+
+    public Peasant() {
+    }
 
     public void setArrow(int arrow) {
         this.arrow = arrow;

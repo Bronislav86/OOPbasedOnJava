@@ -1,8 +1,9 @@
-package ООП.Seminar1.units.Warriors;
+package ООП.Seminar1.Units.Warriors;
 
 import java.util.ArrayList;
-import ООП.Seminar1.BaseCharacter;
-import ООП.Seminar1.Position;
+
+import ООП.Seminar1.MyInterface.Position;
+import ООП.Seminar1.Units.BaseCharacter;
 
 public abstract class Warriors extends BaseCharacter {
     protected int anger;
@@ -13,6 +14,9 @@ public abstract class Warriors extends BaseCharacter {
         this.anger = 30;
         this.speed = 2;
         this.position = new Position(x, y);
+    }
+
+    public Warriors() {
     }
 
     public void attac(BaseCharacter target){
@@ -35,7 +39,7 @@ public abstract class Warriors extends BaseCharacter {
                 position.setX(position.getX() + (diff.getX() < 0 ? 1 : -1));
             } else position.setY(position.getY() + (diff.getY() < 0 ? 1 : -1));
             boolean flag = false;
-            for (ООП.Seminar1.BaseCharacter n : friends) {
+            for (ООП.Seminar1.Units.BaseCharacter n : friends) {
                 if (n.position.equals(position) && n.getHealth() > 0) {
                     flag = true;
                     break;

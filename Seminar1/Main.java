@@ -5,13 +5,18 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import ООП.Seminar1.units.Peasant;
-import ООП.Seminar1.units.Megicains.Monk;
-import ООП.Seminar1.units.Megicains.Wizard;
-import ООП.Seminar1.units.Shooters.Crossbowman;
-import ООП.Seminar1.units.Shooters.Sniper;
-import ООП.Seminar1.units.Warriors.Raider;
-import ООП.Seminar1.units.Warriors.Spearman;
+import ООП.Seminar1.Core.View;
+import ООП.Seminar1.MyInterface.Names;
+import ООП.Seminar1.Units.BaseCharacter;
+import ООП.Seminar1.Units.Model;
+import ООП.Seminar1.Units.Peasant;
+import ООП.Seminar1.Units.Megicains.Monk;
+import ООП.Seminar1.Units.Megicains.Wizard;
+import ООП.Seminar1.Units.Shooters.Crossbowman;
+import ООП.Seminar1.Units.Shooters.Sniper;
+import ООП.Seminar1.Units.Warriors.Raider;
+import ООП.Seminar1.Units.Warriors.Spearman;
+import ООП.Seminar1.Core.Presenter;
 
 /*
 Проанализировать персонажей "Крестьянин, Разбойник, Снайпер, Колдун, Копейщик, Арбалетчик, Монах".
@@ -67,64 +72,14 @@ public class Main {
     
     public static void main(String[] args) {
         
-        System.out.println("Команда №1: ");
-        for (BaseCharacter unit : holyTeam) {
-            System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(),
-                    unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
-        }
-        System.out.println();
+        Presenter myPresenter = new Presenter(new View(), new Crossbowman(), new Sniper(),
+                                new Raider(), new Spearman(), new Peasant(),
+                                new Monk(), new Wizard(), holyTeam, darkTeam, allTeam);
 
-        System.out.println("Команда №2: ");
-        for (BaseCharacter unit : darkTeam) {
-            System.out.printf("Имя: %s, Класс: %s, Здоровье: %d, Координаты: %d,%d\n", unit.getName(),
-                    unit.getClass().getSimpleName(), unit.getHealth(), unit.position.getX(), unit.position.getY());
-        }
-        System.out.println();
+        myPresenter.startGame();
 
-        allTeam.addAll(holyTeam);
-        allTeam.addAll(darkTeam);
-
-        allTeam.sort((o1, o2) -> o2.getSpeed() - o1.getSpeed());
-
-        System.out.println("-".repeat(56));
-        Scanner scanner = new Scanner(System.in);
-        boolean flag = true;
-        while (true) {
-
-            View.view();
-            scanner.nextLine();
-            int summ1HP = 0;
-            int summ2HP = 0;
-            for (BaseCharacter unit : holyTeam){
-                summ1HP += unit.getHealth();
-            }
-            System.out.println(summ1HP);
-            for (BaseCharacter unit : darkTeam){
-                summ2HP += unit.getHealth();
-            }
-            System.out.println(summ2HP);
-            if (summ1HP == 0){
-                System.out.println("Победила команда darkTeam");
-                flag = false;
-                break;
-            }
-            if (summ2HP == 0){
-                System.out.println("Победила команда holyTeam");
-                flag = false;
-                break;
-            }
-            for (BaseCharacter unit : allTeam) {
-                if (holyTeam.contains(unit)) unit.step(darkTeam, holyTeam);
-                else unit.step(holyTeam, darkTeam);
-            }            
-        }
-        scanner.close();
-
-
-
-
+        
     }
-
     private static String fillName() {
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
@@ -159,6 +114,4 @@ public class Main {
         }
         return team;
     }
-
-
 }

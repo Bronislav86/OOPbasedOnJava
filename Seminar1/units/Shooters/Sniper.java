@@ -1,10 +1,13 @@
-package ООП.Seminar1.units.Shooters;
+package ООП.Seminar1.Units.Shooters;
 
 public class Sniper extends Shooters{    
 
     public Sniper(String name, Integer x, Integer y) {
         super(name, x, y);
         this.arrows = 50;
+    }
+
+    public Sniper() {
     }
 
     public String getInfo() {

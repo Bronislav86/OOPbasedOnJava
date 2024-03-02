@@ -1,6 +1,8 @@
-package ООП.Seminar1;
+package ООП.Seminar1.MyInterface;
 
 import java.util.ArrayList;
+
+import ООП.Seminar1.Units.BaseCharacter;
 
 public interface Step {
 

@@ -1,7 +1,9 @@
-package ООП.Seminar1;
+package ООП.Seminar1.MyInterface;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ООП.Seminar1.Units.BaseCharacter;
 
 public class Position {
     protected int x, y;

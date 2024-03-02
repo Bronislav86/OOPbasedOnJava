@@ -1,10 +1,13 @@
-package ООП.Seminar1;
+package ООП.Seminar1.Units;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 
+import ООП.Seminar1.MyInterface.Position;
+import ООП.Seminar1.MyInterface.Step;
 
-public abstract class BaseCharacter implements Step{
+
+public abstract class BaseCharacter implements Step, Model{
 
     protected static Random r;
 
@@ -19,7 +22,10 @@ public abstract class BaseCharacter implements Step{
     protected int speed;    
     public Position position;
 
-    public List<BaseCharacter> units;
+    public ArrayList<BaseCharacter> units;
+
+    public BaseCharacter() {
+    }
 
     static {BaseCharacter.r = new Random();    }
 
@@ -73,7 +79,7 @@ public abstract class BaseCharacter implements Step{
  */
     public String getInfo() {return "";}
 
-    public BaseCharacter nearestEnemy (List<BaseCharacter> targets) {
+    public BaseCharacter nearestEnemy (ArrayList<BaseCharacter> targets) {
         BaseCharacter target = null;
         double minDistance = Double.MAX_VALUE;
         for (BaseCharacter hero : targets) {

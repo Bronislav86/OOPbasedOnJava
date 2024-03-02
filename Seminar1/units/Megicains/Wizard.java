@@ -1,9 +1,12 @@
-package ООП.Seminar1.units.Megicains;
+package ООП.Seminar1.Units.Megicains;
 
 public class Wizard extends Wizzards {
 
     public Wizard(String name, Integer x, Integer y) {
         super(name, x, y);
+    }
+
+    public Wizard() {
     }
 
     public String getInfo() {
