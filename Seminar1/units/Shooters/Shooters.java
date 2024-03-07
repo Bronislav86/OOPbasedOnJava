@@ -33,7 +33,9 @@ abstract public class Shooters extends BaseCharacter {
     public void step(ArrayList<BaseCharacter> targets, ArrayList<BaseCharacter> friends) {
 
         if (getHealth() <= 0 || getArrows() <= 0) return;
-            attac(nearestEnemy(targets));
+            BaseCharacter target = nearestEnemy(targets);
+            if (target == null) return;
+            attac(target);
             //System.out.printf("%s %s %s %s\n", name, getClass().getSimpleName(), "Стреляю в", nearestEnemy(targets).getName());
             if (getArrows() < maxArrows){
             

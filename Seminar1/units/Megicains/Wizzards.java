@@ -1,6 +1,7 @@
 package ООП.Seminar1.Units.Megicains;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import ООП.Seminar1.Units.BaseCharacter;
 
@@ -31,42 +32,39 @@ public abstract class Wizzards extends BaseCharacter {
     public void step(ArrayList<BaseCharacter> targets, ArrayList<BaseCharacter> friends) {
         if (getHealth() <= 0)
             return;
-        ArrayList<BaseCharacter> list = new ArrayList<BaseCharacter>(friends);
+        ArrayList<BaseCharacter> listForHeal = new ArrayList<BaseCharacter>(friends);
         ArrayList<BaseCharacter> listOfDeads = new ArrayList<BaseCharacter>();
-        int count = 0;
-        list.sort((u1, u2) -> u1.getHealth() - u2.getHealth());
+        listForHeal.sort((u1, u2) -> u1.getHealth() - u2.getHealth());
 
-        for (BaseCharacter unit : list) {
-            if (unit.isDead()) {
-                listOfDeads.add(unit);
-                count++;
+        Iterator<BaseCharacter> iterator = listForHeal.iterator();
+            while (iterator.hasNext()) {
+                BaseCharacter unit = iterator.next();
+                if (unit.isDead()) {
+}                   listOfDeads.add(unit);
+                    iterator.remove();
             }
-        }
-        if (count > 3) {
+        
+        if (listOfDeads.size() > 3) {
             flag = true;
             //System.out.println("Флаг устанволен!");
         }
         if (flag && mana == maxMana) {
             listOfDeads.sort((u1, u2) -> u2.getSpeed() - u1.getSpeed());
-            list.getFirst().setHealth(maxHealth/2);
+            listOfDeads.get(0).setHealth(maxHealth/2);
             mana = 0;
             flag = false;
-            //System.out.printf("%s %s %s %s\n", name, getClass().getSimpleName(), "Воскресил", list.getFirst().getName());
             return;
         }
 
         if (flag) {
             mana++;
-            //System.out.printf("%s %s %s\n", name, getClass().getSimpleName(), "Жду ману...");
             return;
         }
         if (mana < 2) {
             mana++;
-            //System.out.printf("%s %s %s\n", name, getClass().getSimpleName(), "Жду ману...");
             return;
         }
-        attac(list.getFirst());
-        //System.out.printf("%s %s %s %s\n", name, getClass().getSimpleName(), "Лечу", list.getFirst().getName());
+        attac(listForHeal.get(0));
         mana -= 2;
 
     }

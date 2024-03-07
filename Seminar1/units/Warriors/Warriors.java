@@ -29,8 +29,9 @@ public abstract class Warriors extends BaseCharacter {
     
     public void step(ArrayList<BaseCharacter> targets, ArrayList<BaseCharacter> friends) {
 
-        if (getHealth() < 0) return;
+        if (isDead()) return;
             BaseCharacter unit = nearestEnemy(targets);
+            if (unit == null) return;
             if (position.getDistanse(unit.position) < 2 && getAnger() > 0) {
                 attac(unit);
                 return;
