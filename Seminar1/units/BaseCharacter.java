@@ -17,7 +17,6 @@ public abstract class BaseCharacter implements Step, Model{
     protected int strength;
     protected int agility;
     protected int stamina;
-    protected Boolean status;
     protected int maxHealth;
     protected int speed;    
     public Position position;
@@ -38,7 +37,6 @@ public abstract class BaseCharacter implements Step, Model{
         this.stamina = 30;
         this.maxHealth = health;
         this.speed = 3;
-        this.status = true;
         this.position = new Position(x, y);
     }
 
@@ -57,12 +55,10 @@ public abstract class BaseCharacter implements Step, Model{
     public String toString() {
         return name +  ", Hp: " + health + ", St: " + strength;
     }
-
-    public Boolean getStatus() {return status;}
            
     public void GetDamage(int damage) {
         health -= damage;
-            if (health < 0) {
+            if (health <= 0) {
                 health = 0;
                 death();
             }
@@ -77,7 +73,6 @@ public abstract class BaseCharacter implements Step, Model{
 /**
  * @return Этот метод сообщает Имя, Уровень здоровья, Координаты и Статус персонажа
  */
-    public String getInfo() {return "";}
 
     public BaseCharacter nearestEnemy (ArrayList<BaseCharacter> targets) {
         BaseCharacter target = null;

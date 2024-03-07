@@ -7,13 +7,11 @@ import ООП.Seminar1.Units.BaseCharacter;
 
 public abstract class Warriors extends BaseCharacter {
     protected int anger;
-    protected Position position;
 
     public Warriors(String name, Integer x, Integer y) {
         super(name, x, y);
         this.anger = 30;
         this.speed = 2;
-        this.position = new Position(x, y);
     }
 
     public Warriors() {
@@ -38,18 +36,18 @@ public abstract class Warriors extends BaseCharacter {
                 return;
             }
             Position diff = this.position.getDiff(unit.position);
-            Position currentPos = new Position(position.getX(), position.getY());
-            if (Math.abs(diff.getX()) <  Math.abs(diff.getY())){
+            // Position currentPos = new Position(position.getX(), position.getY());
+            if (Math.abs(diff.getX()) >  Math.abs(diff.getY())){
                 position.setX(position.getX() + (diff.getX() < 0 ? 1 : -1));
             } else position.setY(position.getY() + (diff.getY() < 0 ? 1 : -1));
-            boolean flag = false;
-            for (BaseCharacter n : friends) {
-                if (n.position.equals(position) && n.getHealth() > 0) {
-                    flag = true;
-                    break;
-                }
-            }
-            if (flag) position = currentPos;
+            // boolean flag = false;
+            // for (BaseCharacter n : friends) {
+            //     if (n.position.equals(position) && n.getHealth() > 0) {
+            //         flag = true;
+            //         break;
+            //     }
+            // }
+            // if (flag) position = currentPos;
 
                 
     }

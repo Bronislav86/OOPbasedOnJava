@@ -62,7 +62,7 @@ public class Presenter {
 
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
-        while (true) {
+        while (flag) {
 
             View.view();
             scanner.nextLine();
@@ -79,18 +79,17 @@ public class Presenter {
             if (summ1HP == 0){
                 System.out.println("Победила команда darkTeam");
                 flag = false;
-                break;
             }
             if (summ2HP == 0){
                 System.out.println("Победила команда holyTeam");
                 flag = false;
-                break;
             }
             for (BaseCharacter unit : allTeam) {
                 if (holyTeam.contains(unit)) unit.step(darkTeam, holyTeam);
                 else unit.step(holyTeam, darkTeam);
             }            
         }
+        scanner.close();
     }
 
    
